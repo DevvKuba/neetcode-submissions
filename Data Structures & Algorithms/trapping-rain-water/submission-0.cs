@@ -1,0 +1,32 @@
+public class Solution {
+    public int Trap(int[] height)
+{
+    if (height.Length == 0) return 0;
+    int l = 0;
+    int r = height.Length - 1;
+
+    int maxL = height[l];
+    int maxR = height[r];
+    int result = 0;
+
+    while (l < r)
+    {
+        if (maxL < maxR)
+        {
+            l++;
+            maxL = Math.Max(maxL, height[l]);
+            result += maxL - height[l];
+        }
+        else
+        {
+            r--;
+            maxR = Math.Max(maxR, height[r]);
+            result += maxR - height[r];
+
+        }
+    }
+
+    return result;
+
+}
+}
